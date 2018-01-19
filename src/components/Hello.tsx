@@ -11,5 +11,4 @@ export class Hello extends React.Component<any, HelloState> {
             </div>
         );
     }
-
 }
