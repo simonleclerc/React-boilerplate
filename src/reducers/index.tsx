@@ -1,19 +1,11 @@
-import {BidAction} from "../actions";
+import { combineReducers } from "redux";
+import {currentBet} from "./bet";
+import {walletAmount} from "./walletAmount";
+import {winner} from "./winner";
 import {StoreState} from "../types";
-import {INCREMENT_BID, DECREMENT_BID} from "../constants";
 
-export function bid(state: StoreState, action: BidAction): StoreState {
-    switch (action.type) {
-        case DECREMENT_BID:
-            if (state.currentBid >= 10) {
-                return {...state, currentBid: state.currentBid - 10, walletAmount: state.walletAmount + 10};
-            }
-            break;
-        case INCREMENT_BID:
-            if (state.walletAmount >= 10) {
-                return {...state, currentBid: state.currentBid + 10, walletAmount: state.walletAmount - 10};
-            }
-            break;
-    }
-    return state;
-}
+export default combineReducers<StoreState>({
+    currentBet: currentBet,
+    walletAmount: walletAmount,
+    winner: winner
+});
