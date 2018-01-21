@@ -31,7 +31,7 @@ function Bet({walletAmount, currentBet, winner, onIncrement, onDecrement, choose
             {(t, {i18n}) => (
                 <div>
                     <h1>{t("bet:place")}</h1>
-                    <span>{t("bet:wallet_amount")} {walletAmount}$</span><br/>
+                    <span className="walletAmount">{t("bet:wallet_amount")} {walletAmount}$</span><br/>
                     {teams.map((team: Team) => {
                         return <div key={team.id}
                                     onClick={() => chooseTeam(team.id)}>{t("bet:team")} {team.label}, {t("bet:power")} {team.power}</div>;
