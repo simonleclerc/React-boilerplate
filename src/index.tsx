@@ -9,6 +9,9 @@ import createHistory from "history/createHashHistory";
 import { Route, Switch } from "react-router-dom";
 import { ConnectedRouter, routerMiddleware } from "react-router-redux";
 import App from "./components/App";
+import { I18n } from "react-i18next";
+import i18n from "./i18n";
+import I18nextProvider from "react-i18next/src/I18nextProvider";
 
 const history = createHistory();
 const middleware = routerMiddleware(history);
@@ -28,9 +31,9 @@ ReactDOM.render(
     <AppContainer>
         <Provider store={store}>
             <ConnectedRouter history={history}>
-                <Switch>
-                    <Route path="/" component={App} />
-                </Switch>
+                    <Switch>
+                        <Route path="/" component={App} />
+                    </Switch>
             </ConnectedRouter>
         </Provider>
     </AppContainer>,

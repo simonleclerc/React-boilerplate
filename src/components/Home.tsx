@@ -1,5 +1,6 @@
 import * as React from "react";
 import {Link} from "react-router-dom";
+import {I18n} from "react-i18next";
 
 interface Props {
 
@@ -7,10 +8,15 @@ interface Props {
 
 function Home({}: Props) {
     return (
-        <div>
-            <h1>Hello, welcome to this react boilerplate</h1>
-            <p>Go <Link to="/bet">there</Link> if you want to bet on your team</p>
-        </div>
+        <I18n ns="translations">
+            {(t, {i18n}) => (
+                <div>
+                    <h1>{i18n.t("home:welcome")}</h1>
+                    <p>{i18n.t("home:redirect.part1")} <Link
+                        to="/bet">{i18n.t("home:redirect.part2")}</Link> {i18n.t("home:redirect.part3")}</p>
+                </div>
+            )}
+        </I18n>
     );
 }
 
