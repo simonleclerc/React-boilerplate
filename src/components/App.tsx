@@ -3,25 +3,41 @@ import {Route, Switch} from "react-router";
 import Home from "./Home";
 import Bet from "../containers/Bet";
 import {I18n} from "react-i18next";
+import i18n from "./../i18n";
+import { Layout, Menu, Dropdown, Icon, Button } from "antd";
+const { Header, Footer, Content,  } = Layout;
 
 interface Props {
-
 }
 
 function App({}: Props) {
+    const menu = (
+        <Menu>
+            <Menu.Item>
+                <Button onClick={() => i18n.changeLanguage("fr")}>Fr</Button>
+            </Menu.Item>
+            <Menu.Item>
+                <Button onClick={() => i18n.changeLanguage("en")}>En</Button>
+            </Menu.Item>
+        </Menu>
+    );
     return (
-        <I18n ns="translations">
-            {(t, {i18n}) => (
-                <div>
-                    <button onClick={() => i18n.changeLanguage("fr")}>Fr</button>
-                    <button onClick={() => i18n.changeLanguage("en")}>En</button>
-                    <Switch>
-                        <Route exact path="/" component={Home}/>
-                        <Route path="/bet" component={Bet}/>
-                    </Switch>
-                </div>
-            )}
-        </I18n>
+        <Layout>
+            <Header>
+                <Dropdown overlay={menu}>
+                    <a className="ant-dropdown-link" href="#">
+                        Language <Icon type="down" />
+                    </a>
+                </Dropdown>
+            </Header>
+            <Content>
+                <Switch>
+                    <Route exact path="/" component={Home}/>
+                    <Route path="/bet" component={Bet}/>
+                </Switch>
+            </Content>
+            <Footer>Footer</Footer>
+        </Layout>
     );
 }
 

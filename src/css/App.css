@@ -1,0 +1,5 @@
+@import '~antd/dist/antd.css';
+
+a:after, a:before {
+    content: "\2605";
+}

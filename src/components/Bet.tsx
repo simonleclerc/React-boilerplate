@@ -2,6 +2,7 @@ import * as React from "react";
 import {Bet, Team} from "../types";
 import {I18n} from "react-i18next";
 import i18n from "./../i18n";
+import {Button} from "antd";
 
 interface Props {
     walletAmount: number;
@@ -33,17 +34,19 @@ function Bet({walletAmount, currentBet, winner, onIncrement, onDecrement, choose
                     <h1>{t("bet:place")}</h1>
                     <span className="walletAmount">{t("bet:wallet_amount")} {walletAmount}$</span><br/>
                     {teams.map((team: Team) => {
-                        return <div key={team.id}
-                                    onClick={() => chooseTeam(team.id)}>{t("bet:team")} {team.label}, {t("bet:power")} {team.power}</div>;
+                        return <div key={team.id}>
+                            {t("bet:team")} {team.label}, {t("bet:power")} {team.power}
+                            <Button onClick={() => chooseTeam(team.id)}>Choose</Button>
+                            </div>;
                     })}
                     <span>{t("bet:bet_amount")} {currentBet.amount}$</span>
                     <div>
-                        <button onClick={() => onDecrement(currentBet)}>-</button>
-                        <button onClick={() => onIncrement(walletAmount, currentBet)}>+</button>
+                        <Button type="primary" onClick={() => onDecrement(currentBet)}>-</Button>
+                        <Button type="primary" onClick={() => onIncrement(walletAmount, currentBet)}>+</Button>
                     </div>
                     {betHTML}
 
-                    <button onClick={() => onFight(teams)}>{t("bet: fight")}</button>
+                    <button onClick={() => onFight(teams)}>{t("bet:fight")}</button>
                     {winner ? <p>{t("bet:winner_is")} {teams.filter(t => t.id === winner)[0].label}</p> :
                         <p>{t("bet:no_match")}</p>}
                 </div>
