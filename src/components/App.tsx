@@ -25,9 +25,9 @@ function App({}: Props) {
         <Layout>
             <Header>
                 <Dropdown overlay={menu}>
-                    <a className="ant-dropdown-link" href="#">
+                    <Button className="ant-dropdown-link">
                         Language <Icon type="down" />
-                    </a>
+                    </Button>
                 </Dropdown>
             </Header>
             <Content>

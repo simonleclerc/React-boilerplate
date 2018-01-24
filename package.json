@@ -5,8 +5,10 @@
   "main": "server.js",
   "scripts": {
     "start": "webpack-dev-server",
-    "build": "webpack --progress --colors",
-    "build:w": "webpack --progress --colors --watch",
+    "build": "webpack --config config/webpack.dev.config.js --progress -d",
+    "build:w": "webpack --config config/webpack.dev.config.js --progress -d --watch",
+    "build:prod": "webpack --config config/webpack.prod.config.js --progress -d",
+    "build:prod:w": "webpack --config config/webpack.prod.config.js --progress -d --watch",
     "test": "react-scripts-ts test --env=jsdom"
   },
   "dependencies": {
@@ -56,6 +58,7 @@
     "tslint": "^5.9.1",
     "typescript": "^2.6.2",
     "webpack": "^3.10.0",
+    "webpack-merge": "^4.1.1",
     "webpack-dev-server": "^2.4.5"
   }
 }

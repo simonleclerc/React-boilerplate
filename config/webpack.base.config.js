@@ -9,11 +9,8 @@ module.exports = {
     ],
     output: {
         filename: "bundle.js",
-        path: __dirname + "/dist"
+        path: path.join(__dirname, '..', "dist")
     },
-
-    // for debugging webpack's output
-    devtool: "source-map",
 
     resolve: {
         // Add '.ts' and '.tsx' as resolvable extensions.
@@ -26,7 +23,7 @@ module.exports = {
         new HtmlWebpackPlugin({
             title: 'Home made Boilerplate',
             chunksSortMode: 'dependency',
-            template: path.resolve(__dirname, './index.ejs')
+            template: path.resolve(__dirname, '../index.ejs')
         })
     ],
 
@@ -34,8 +31,8 @@ module.exports = {
         loaders: [
             {
                 test: /\.tsx?$/,
-                exclude: path.resolve(__dirname, 'node_modules'),
-                include: path.resolve(__dirname, "src"),
+                exclude: path.resolve(__dirname,"..", 'node_modules'),
+                include: path.resolve(__dirname,"..", "src"),
                 loaders: ['react-hot-loader/webpack', 'awesome-typescript-loader']
             },
             // All output '.js' files will have any sourcemaps re-processed by 'source-map-loader'.
@@ -49,9 +46,5 @@ module.exports = {
                 use: [ 'style-loader', 'css-loader' ]
             }
         ]
-    },
-
-    devServer: {
-        hot: true
     }
 };
